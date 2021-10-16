@@ -46,8 +46,6 @@ def scrape(items, pages):
             ):
                 print(headline.text)
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == "__main__":
     logging.info(f"Scraping data...")
     scrape(ITEMS, 1)
