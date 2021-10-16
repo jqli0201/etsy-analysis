@@ -16,8 +16,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 def preprocess(items: list):
     return [item.replace(" ", "%20") for item in items]
+
 
 def make_url(items: list, pages: int):
     """Defines url to call Etsy with desired items and pages
@@ -39,7 +41,9 @@ def scrape(items, pages):
             logging.info(f"Visiting {url}")
             soup = BeautifulSoup(r.content, "html.parser")
             # work in progress here
-            for headline in soup.find_all("a", {"class": "listing-link wt-display-inline-block*"}):
+            for headline in soup.find_all(
+                "a", {"class": "listing-link wt-display-inline-block*"}
+            ):
                 print(headline.text)
 
 
@@ -47,5 +51,3 @@ def scrape(items, pages):
 if __name__ == "__main__":
     logging.info(f"Scraping data...")
     scrape(ITEMS, 1)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
